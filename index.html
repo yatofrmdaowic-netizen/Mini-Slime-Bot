@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mini MD Bot Full Stack Studio</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <h1>Mini MD Bot Full Stack Studio</h1>
+      <p>Downloads (Instagram/TikTok/Facebook/song), stalkers (social + ML/NPM/GitHub), group protection/admin, fun, and games.</p>
+      <div class="row">
+        <button id="saveApiBtn">Save Session to API</button>
+        <button id="downloadSessionBtn">Download Session JSON</button>
+      </div>
+      <div class="status" id="saveStatus">Ready</div>
+    </header>
+
+    <main class="grid">
+      <section class="card">
+        <h2>🔗 WhatsApp MD Pairing</h2>
+        <input id="sessionId" placeholder="Session ID" />
+        <input id="deviceName" placeholder="Linked device name" />
+        <input id="phoneNumber" placeholder="WhatsApp phone number" />
+        <div class="row">
+          <input id="pairCode" readonly placeholder="Pair code" />
+          <button id="generatePairBtn">Generate Pair</button>
+        </div>
+        <textarea id="codeInput" rows="7" placeholder="Bot code workspace"></textarea>
+      </section>
+
+      <section class="card">
+        <h2>👥 Group Protection + Admin Control</h2>
+        <input id="groupId" placeholder="Group ID" />
+        <input id="groupName" placeholder="Group name" />
+        <input id="groupJid" placeholder="Group JID" />
+        <div class="row"><input id="memberInput" placeholder="Member number" /><button id="addMemberBtn">Add</button></div>
+        <div class="row"><input id="adminInput" placeholder="Admin number" /><button id="addAdminBtn">Add Admin</button></div>
+        <div class="checks">
+          <label><input type="checkbox" id="welcomeToggle"/>Welcome</label>
+          <label><input type="checkbox" id="antiLinkToggle"/>Anti-link</label>
+          <label><input type="checkbox" id="muteToggle"/>Auto mute</label>
+          <label><input type="checkbox" id="protectSpamToggle"/>Anti-spam</label>
+          <label><input type="checkbox" id="protectToxicToggle"/>Anti-toxic</label>
+          <label><input type="checkbox" id="protectLockToggle"/>Lock group</label>
+          <label><input type="checkbox" id="protectAdminOnlyToggle"/>Admin only mode</label>
+          <label><input type="checkbox" id="protectApproveToggle"/>Approve members</label>
+        </div>
+        <ul id="memberList"></ul>
+        <ul id="adminList"></ul>
+        <div class="row wrap">
+          <button id="saveGroupBtn">Save Group API</button>
+          <button id="saveProtectionBtn">Save Protection API</button>
+        </div>
+        <input id="adminActor" placeholder="Admin actor" />
+        <input id="adminTarget" placeholder="Target user" />
+        <select id="adminActionType"><option value="promote">promote</option><option value="demote">demote</option><option value="kick">kick</option></select>
+        <button id="runAdminActionBtn">Run Admin Action</button>
+      </section>
+
+      <section class="card">
+        <h2>⬇️ Instagram / TikTok / Facebook Download</h2>
+        <input id="igUrl" placeholder="Instagram URL" /><button id="downloadIgBtn">Download Instagram API</button>
+        <input id="ttUrl" placeholder="TikTok URL" /><button id="downloadTtBtn">Download TikTok API</button>
+        <input id="fbUrl" placeholder="Facebook URL" /><button id="downloadFbBtn">Download Facebook API</button>
+      </section>
+
+      <section class="card">
+        <h2>⬇️ Social + Song Download</h2>
+        <input id="socialPlatform" placeholder="Platform" />
+        <input id="socialUrl" placeholder="Social media URL" />
+        <button id="downloadSocialBtn">Download Social API</button>
+        <input id="songQuery" placeholder="Song title" />
+        <input id="songArtist" placeholder="Artist" />
+        <button id="downloadSongBtn">Download Song API</button>
+      </section>
+
+      <section class="card">
+        <h2>🕵️ Stalker (General + Social)</h2>
+        <input id="stalkerActor" placeholder="Actor" />
+        <input id="stalkerAction" placeholder="Action" />
+        <input id="stalkerTarget" placeholder="Target" />
+        <button id="trackStalkerBtn">Track General</button>
+        <button id="refreshStalkerBtn">Refresh General</button>
+        <ol id="stalkerList"></ol>
+
+        <input id="socialStalkerPlatform" placeholder="Social platform" />
+        <input id="socialStalkerUser" placeholder="Username" />
+        <input id="socialStalkerType" placeholder="Event type" />
+        <input id="socialStalkerNotes" placeholder="Notes" />
+        <button id="trackSocialStalkerBtn">Track Social</button>
+        <button id="refreshSocialStalkerBtn">Refresh Social</button>
+        <ol id="socialStalkerList"></ol>
+      </section>
+
+      <section class="card">
+        <h2>🔍 ML / NPM / GitHub Stalk</h2>
+        <input id="mlUserId" placeholder="ML User ID" /><input id="mlServerId" placeholder="ML Server ID" /><input id="mlRank" placeholder="ML Rank" /><input id="mlHero" placeholder="Favorite Hero" />
+        <button id="stalkMlBtn">Stalk ML API</button>
+        <input id="npmPackage" placeholder="NPM package" /><input id="npmVersion" placeholder="NPM version" />
+        <button id="stalkNpmBtn">Stalk NPM API</button>
+        <input id="githubUser" placeholder="GitHub username" />
+        <button id="stalkGithubBtn">Stalk GitHub API</button>
+        <button id="refreshTechStalkBtn">Refresh All Tech Stalk</button>
+        <textarea id="techStalkOutput" rows="7" readonly placeholder="ML/NPM/GitHub stalk output"></textarea>
+      </section>
+
+      <section class="card">
+        <h2>🎉 Fun Features (Private + Group)</h2>
+        <input id="funPrivateUser" placeholder="Private user" />
+        <input id="funPrivateAction" placeholder="Private action (joke/truth/dare)" />
+        <button id="runFunPrivateBtn">Run Private Fun</button>
+        <input id="funGroupId" placeholder="Group ID for fun" />
+        <input id="funGroupAction" placeholder="Group action (icebreak/quiz/truth)" />
+        <button id="runFunGroupBtn">Run Group Fun</button>
+      </section>
+
+      <section class="card">
+        <h2>🎮 Games Features</h2>
+        <input id="gameType" placeholder="Game type (quiz/rps/tebak)" />
+        <input id="gamePlayer" placeholder="Player" />
+        <div class="row"><button id="playGameBtn">Play Game</button><button id="refreshScoresBtn">Refresh Scores</button></div>
+        <ol id="gameScoresList"></ol>
+      </section>
+
+      <section class="card">
+        <h2>🎨 Sticker + Tools + AI</h2>
+        <input id="stickerCaption" placeholder="Sticker caption" />
+        <div class="sticker-grid" id="stickerGrid"></div>
+        <p>Selected: <strong id="selectedSticker">None</strong></p>
+        <button id="generateStickerBtn">Generate Sticker API</button>
+        <input id="imagePrompt" placeholder="Image prompt" />
+        <button id="generateImageBtn">Generate Image API</button>
+        <a id="generatedImageLink" target="_blank"></a>
+        <textarea id="aiPrompt" rows="3" placeholder="Ask AI"></textarea>
+        <button id="askAiBtn">Ask AI API</button>
+        <textarea id="aiReply" rows="4" readonly placeholder="AI response"></textarea>
+        <textarea id="toolsOutput" rows="5" placeholder="Tools output"></textarea>
+      </section>
+
+      <section class="card">
+        <h2>👑 Owner + Menu</h2>
+        <input id="ownerName" placeholder="Owner name" />
+        <input id="ownerNumber" placeholder="Owner number" />
+        <select id="ownerMode"><option value="public">public</option><option value="self">self</option><option value="private">private</option></select>
+        <label><input type="checkbox" id="ownerEval" /> Allow eval</label>
+        <div class="row"><button id="loadOwnerBtn">Load Owner</button><button id="saveOwnerBtn">Save Owner</button></div>
+        <input id="menuName" placeholder="menu name" />
+        <div class="row"><button id="getMenuBtn">Get Menu</button><button id="getAllmenuBtn">Get Allmenu</button></div>
+        <textarea id="menuOutput" rows="6" readonly placeholder="Menu output"></textarea>
+      </section>
+
+      <section class="card">
+        <h2>⬇️ File Downloads</h2>
+        <div class="row wrap">
+          <button id="downloadCodeBtn">Download Code</button>
+          <button id="downloadGroupBtn">Download Group JSON</button>
+          <button id="downloadStalkerBtn">Download Stalker JSON</button>
+          <button id="downloadApiSessionBtn">Download API Session</button>
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
