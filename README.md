@@ -31,4 +31,4 @@ vercel
 vercel --prod
 ```
 
-This repo includes `vercel.json` plus `api/index.js` (Vercel function wrapper) and a reusable `index.js` handler, so both frontend and API routes are served by Vercel.
+This repo includes `vercel.json` (using `@vercel/node` build + routes), plus `api/index.js` wrapper and reusable `index.js` handler, so both frontend and API routes are served by Vercel without runtime-version config errors.
